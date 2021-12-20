@@ -1,5 +1,4 @@
-$text: #cccccc;
-$text-pseudo: #ffffff;
+@import "./config";
 
 html, body {
     background-color: #000;
@@ -24,7 +23,10 @@ a {
 }
 
 .page-content {
-    padding-top: 4em;
+    padding-top: 8em;
+    @media (min-width: 768px) {
+        padding-top: 4em;
+    }
 }
 
 // img {

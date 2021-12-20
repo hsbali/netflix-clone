@@ -1,0 +1,62 @@
+@import "./../config";
+
+.carousel-container {
+  margin: 0rem 1rem 0rem 1rem;
+  @media (min-width: 768px) {
+    margin: 0rem 3rem 0rem 3rem;
+  }
+  @media (min-width: 992px) {
+    margin: 0rem 5rem 0rem 5rem;
+  }
+  & .carousel {
+    position: relative;
+    & .end-overflow {
+      position: absolute;
+      height: 100%;
+      width: 100px;
+      top: 0px;
+      right: 0px;
+      background-image: linear-gradient(to left, #000, rgba(0, 0, 0, 0));
+      opacity: 0;
+      transition: all 0.2s linear 0s;
+      &.visible {
+        opacity: 1;
+      }
+    }
+    & .start-overflow {
+      position: absolute;
+      height: 100%;
+      width: 100px;
+      top: 0px;
+      background-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0));
+      opacity: 0;
+      transition: all 0.2s linear 0s;
+      &.visible {
+        opacity: 1;
+      }
+    }
+    & .content-item {
+      & small {
+        font-size: 75%;
+      }
+      & img {
+        transition: all 0.2s linear 0s;
+      }
+      &:hover {
+        & img {
+          transform: scale(110%);
+        }
+        & p,
+        small {
+          color: $text;
+        }
+      }
+      & .poster-container {
+        overflow: hidden;
+        border-radius: 4px;
+        width: 160px;
+      }
+    }
+  }
+   
+}

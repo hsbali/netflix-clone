@@ -1,32 +1,33 @@
-@import "./config";
+@import './config';
 
-html, body {
-    background-color: #000;
-    color: $text;
+html,
+body {
+	background-color: #000;
+	color: $text;
 }
 
 ul {
-    list-style: none;
-    padding-left: 0px;
-    margin-bottom: 0px;
+	list-style: none;
+	padding-left: 0px;
+	margin-bottom: 0px;
 }
 
 a {
-    color: $text;
-    text-decoration: none;
-    &.active{
-        color: $text-pseudo;
-    }
-    &:hover {
-        color: $text-pseudo;
-    }
+	color: $text;
+	text-decoration: none;
+	&.active {
+		color: $text-pseudo;
+	}
+	&:hover {
+		color: $text-pseudo;
+	}
 }
 
 .page-content {
-    padding-top: 8em;
-    @media (min-width: 768px) {
-        padding-top: 4em;
-    }
+	padding-top: 8em;
+	@media (min-width: 768px) {
+		padding-top: 4em;
+	}
 }
 
 // img {

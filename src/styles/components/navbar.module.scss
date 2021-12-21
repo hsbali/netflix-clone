@@ -1,12 +1,12 @@
-@import "./../config";
+@import './../config';
 
 .main-nav {
-    background-color: rgba(0, 0, 0, 0.92);
-    top: 0px;
-    position: fixed;
-    z-index: 10;
+	background-color: rgba(0, 0, 0, 0.92);
+	top: 0px;
+	position: fixed;
+	z-index: 10;
 
-    & .active {
-        color: $text-pseudo
-    }
+	& .active {
+		color: $text-pseudo;
+	}
 }

@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 
-import discover from "./discover.reducer";
-import contentDetails from "./contentDetails.reducer";
+import discover from './discover.reducer'
+import contentDetails from './contentDetails.reducer'
 
-export default combineReducers({ discover, contentDetails });
+export default combineReducers({ discover, contentDetails })

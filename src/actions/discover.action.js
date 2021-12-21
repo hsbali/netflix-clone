@@ -32,10 +32,16 @@ export const getMoviesInCarousel =
 			)
 
 			const carouselData = {
+				key: carouselOptions.key,
 				name: carouselOptions.name,
 				itemType: carouselOptions.itemType,
 				items: res.data.results,
 				page: res.data.page,
+				totalPages: res.data.total_pages,
+				requestOptions: {
+					...defaulQueryParams,
+					...requestOptions,
+				},
 			}
 
 			dispatch({
@@ -73,10 +79,16 @@ export const getTvShowsInCarousel =
 			)
 
 			const carouselData = {
+				key: carouselOptions.key,
 				name: carouselOptions.name,
 				itemType: carouselOptions.itemType,
 				items: res.data.results,
 				page: res.data.page,
+				totalPages: res.data.total_pages,
+				requestOptions: {
+					...defaulQueryParams,
+					...requestOptions,
+				},
 			}
 
 			dispatch({
@@ -91,6 +103,47 @@ export const getTvShowsInCarousel =
 			if (err.response) return alert(err.message)
 		}
 	}
+
+export const onLoadMoreInCarousel = (carouselData) => async (dispatch) => {
+	try {
+		if (!carouselData) {
+			alert('Cannot load more items')
+			const err = { message: 'Carousel option are not defined' }
+			throw err
+		}
+
+		if (carouselData.page <= 500) {
+			const newRequestOptions = {
+				...carouselData.requestOptions,
+				page: carouselData.requestOptions.page + 1,
+			}
+			const res = await request(
+				'GET',
+				`${process.env.REACT_APP_DB_BASE_URL}/3/discover/${
+					carouselData.itemType
+				}${generateQueryParams(newRequestOptions)}`
+			)
+
+			const newCarouselData = {
+				items: [...carouselData.items, ...res.data.results],
+				page: res.data.page,
+				totalPages: res.data.total_pages,
+			}
+
+			dispatch({
+				type: t.ON_LOAD_MORE_ITEMS_SUCCESS,
+				payload: { key: carouselData.key, data: newCarouselData },
+			})
+		}
+	} catch (err) {
+		console.log(err)
+		alert('Cannot load more items')
+		dispatch({
+			type: t.ON_LOAD_MORE_ITEMS_SUCCESS,
+		})
+		// if (err.response) return alert(err.message)
+	}
+}
 
 export const clearCarouselsWithItems = () => (dispatch) => {
 	dispatch({

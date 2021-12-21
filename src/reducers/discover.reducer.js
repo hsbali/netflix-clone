@@ -36,6 +36,17 @@ const discover = (state = initialState, action) => {
 				...state,
 				carouselsWithItems: {},
 			}
+		case t.ON_LOAD_MORE_ITEMS_SUCCESS:
+			return {
+				...state,
+				carouselsWithItems: {
+					...state.carouselsWithItems,
+					[payload.key]: {
+						...state.carouselsWithItems[payload.key],
+						...payload.data,
+					},
+				},
+			}
 		default:
 			return state
 	}

@@ -1,24 +1,28 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { useHorizontalScroll } from '../hooks/useHorizontalScroll'
+
+import { onLoadMoreInCarousel } from '../actions/discover.action'
 
 import styles from './../styles/components/contentCarousel.module.scss'
 
 const ContentCarousel = ({ carouselWithItems }) => {
+	const dispatch = useDispatch()
 	const [startOverflow, setStartOverflow] = useState(false)
 	const [endOverflow, setEndOverflow] = useState(true)
 
-	const scrollRef = useHorizontalScroll(setStartOverflow, setEndOverflow)
+	const scrollRef = useRef() // useHorizontalScroll(setStartOverflow, setEndOverflow)
 
 	const onScrollCarousel = (e) => {
 		const el = scrollRef.current
 		if (el.scrollLeft === el.scrollWidth - el.clientWidth) {
 			setEndOverflow(false)
+			dispatch(onLoadMoreInCarousel(carouselWithItems))
 		} else {
 			setEndOverflow(true)
 		}
 
-		if (el.scrollLeft !== 0 && setStartOverflow) {
+		if (el.scrollLeft !== 0) {
 			setStartOverflow(true)
 		} else {
 			setStartOverflow(false)
@@ -26,7 +30,7 @@ const ContentCarousel = ({ carouselWithItems }) => {
 	}
 
 	return (
-		<div className={`${styles['carousel-container']}`}>
+		<div className={`${styles['carousel-container']} mb-3`}>
 			<h3 className="mt-5 mb-4">{carouselWithItems.name}</h3>
 			<div className={`${styles['carousel']}`}>
 				<div

@@ -25,6 +25,12 @@ export function useHorizontalScroll(setStartOverflow, setEndOverflow) {
 					setStartOverflow(false)
 				}
 
+				console.log(
+					el.scrollLeft,
+					e.deltaY,
+					el.scrollLeft + e.deltaY + 20
+				)
+
 				el.scrollTo({
 					left: el.scrollLeft + e.deltaY,
 					behavior: 'smooth',

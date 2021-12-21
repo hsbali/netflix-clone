@@ -35,7 +35,6 @@ const contentDetails = (state = initialState, action) => {
 				item: null,
 				error: false,
 			}
-
 		default:
 			return state
 	}

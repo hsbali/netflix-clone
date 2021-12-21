@@ -4,6 +4,8 @@ html,
 body {
 	background-color: #000;
 	color: $text;
+	scrollbar-width: thin;
+	scrollbar-color: #333 transparent;
 }
 
 ul {
@@ -30,6 +32,24 @@ a {
 	}
 }
 
-// img {
-//     width: 100%;
-// }
+/* width */
+::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #222;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #333;
+}

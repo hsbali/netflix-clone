@@ -11,13 +11,9 @@
 	& .carousel {
 		position: relative;
 		& .carousel-scroll {
-			overflow-y: scroll;
-			position: static;
-			-ms-overflow-style: none; /* IE and Edge */
-			scrollbar-width: none; /* Firefox */
-			&::-webkit-scrollbar {
-				display: none;
-			}
+			overflow: auto;
+			scrollbar-width: thin;
+			scrollbar-color: #333 transparent;
 		}
 		& .end-overflow {
 			position: absolute;

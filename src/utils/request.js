@@ -12,7 +12,7 @@ const request = async (method, url, body) => {
 	switch (method) {
 		case 'GET':
 			request = await axios.get(
-				`https://cors-anywhere.herokuapp.com/${url}`
+				url
 			)
 			break
 		case 'POST':

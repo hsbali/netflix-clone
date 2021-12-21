@@ -1,15 +1,24 @@
 @import './../config';
 
 .carousel-container {
-	margin: 0rem 1rem 0rem 1rem;
+	margin: 0rem 2rem 0rem 2rem;
 	@media (min-width: 768px) {
-		margin: 0rem 3rem 0rem 3rem;
+		margin: 0rem 4rem 0rem 4rem;
 	}
 	@media (min-width: 992px) {
-		margin: 0rem 5rem 0rem 5rem;
+		margin: 0rem 6rem 0rem 6rem;
 	}
 	& .carousel {
 		position: relative;
+		& .carousel-scroll {
+			overflow-y: scroll;
+			position: static;
+			-ms-overflow-style: none;  /* IE and Edge */
+  			scrollbar-width: none; /* Firefox */
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
 		& .end-overflow {
 			position: absolute;
 			height: 100%;

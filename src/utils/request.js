@@ -11,9 +11,7 @@ const request = async (method, url, body) => {
 
 	switch (method) {
 		case 'GET':
-			request = await axios.get(
-				url
-			)
+			request = await axios.get(url)
 			break
 		case 'POST':
 			request = await axios.post(url, body)

@@ -8,7 +8,10 @@ export function useHorizontalScroll(setStartOverflow, setEndOverflow) {
 			const onWheel = (e) => {
 				e.preventDefault()
 
-				if (el.scrollLeft === el.scrollWidth - el.clientWidth && setEndOverflow) {
+				if (
+					el.scrollLeft === el.scrollWidth - el.clientWidth &&
+					setEndOverflow
+				) {
 					setEndOverflow(false)
 				} else {
 					setEndOverflow(true)

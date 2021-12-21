@@ -25,7 +25,7 @@ const ContentCarousel = ({ carouselWithItems }) => {
 					<>
 						<ul
 							ref={scrollRef}
-							className={`${styles["carousel-scroll"]} d-flex gap-2`}
+							className={`${styles['carousel-scroll']} d-flex gap-2`}
 						>
 							{carouselWithItems.items.map((item, i) => {
 								return (

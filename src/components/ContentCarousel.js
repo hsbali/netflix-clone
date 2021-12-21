@@ -9,6 +9,23 @@ const ContentCarousel = ({ carouselWithItems }) => {
 	const [endOverflow, setEndOverflow] = useState(true)
 
 	const scrollRef = useHorizontalScroll(setStartOverflow, setEndOverflow)
+	
+	const onScrollCarousel = (e) => {
+		const el = scrollRef.current
+		if (
+			el.scrollLeft === el.scrollWidth - el.clientWidth
+		) {
+			setEndOverflow(false)
+		} else {
+			setEndOverflow(true)
+		}
+
+		if (el.scrollLeft !== 0 && setStartOverflow) {
+			setStartOverflow(true)
+		} else {
+			setStartOverflow(false)
+		}
+	}
 
 	return (
 		<div className={`${styles['carousel-container']}`}>
@@ -26,6 +43,7 @@ const ContentCarousel = ({ carouselWithItems }) => {
 						<ul
 							ref={scrollRef}
 							className={`${styles['carousel-scroll']} d-flex gap-2`}
+							onScroll={(e) => onScrollCarousel(e)}
 						>
 							{carouselWithItems.items.map((item, i) => {
 								return (

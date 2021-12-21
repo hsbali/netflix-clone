@@ -22,7 +22,7 @@
 		& .end-overflow {
 			position: absolute;
 			height: 100%;
-			width: 100px;
+			width: 40px;
 			top: 0px;
 			right: 0px;
 			background-image: linear-gradient(to left, #000, rgba(0, 0, 0, 0));
@@ -31,17 +31,29 @@
 			&.visible {
 				opacity: 1;
 			}
+			@media (min-width: 768px) {
+				width: 70px;
+			}
+			@media (min-width: 992px) {
+				width: 100px;
+			}
 		}
 		& .start-overflow {
 			position: absolute;
 			height: 100%;
-			width: 100px;
+			width: 40px;
 			top: 0px;
 			background-image: linear-gradient(to right, #000, rgba(0, 0, 0, 0));
 			opacity: 0;
 			transition: all 0.2s linear 0s;
 			&.visible {
 				opacity: 1;
+			}
+			@media (min-width: 768px) {
+				width: 70px;
+			}
+			@media (min-width: 992px) {
+				width: 100px;
 			}
 		}
 		& .content-item {

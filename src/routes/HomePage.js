@@ -11,9 +11,9 @@ const Home = () => {
 
   const carousels = {
       popularMovies: {
-          name: "Popular Movie",
+          name: "Popular Movies",
           itemType: "movie",
-          key: "Popular Movies"
+          key: "popularMovies"
       },
       popularTVShows: {
         name: "Popular TV Shows",
@@ -24,12 +24,12 @@ const Home = () => {
   }
 
   useEffect(() => {
-    dispatch(clearCarouselsWithItems());
     dispatch(getMoviesInCarousel(carousels.popularMovies));
     dispatch(getTvShowsInCarousel(carousels.popularTVShows))
-  }, []);
+    return (() => dispatch(clearCarouselsWithItems()))
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return <main className="page-content">
+  return (<main className="page-content">
       {Object.keys(pageCarousels).map((carouselKey, i) => {
           return (
               <Fragment key={i}>
@@ -37,7 +37,7 @@ const Home = () => {
               </Fragment>
           )
       })}
-  </main>;
+  </main>);
 };
 
 export default Home;

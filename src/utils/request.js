@@ -6,11 +6,10 @@ const request = async (method, url, body) => {
   if (!axios.defaults.headers.common["Authorization"]) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${process.env.REACT_APP_TMDB_BEARER_TOKEN}`;
   }
-  // setApiAccessToken(process.env.REACT_APP_TMDB_BEARER_TOKEN);
 
   switch (method) {
     case "GET":
-      request = await axios.get(url);
+      request = await axios.get(`https://cors-anywhere.herokuapp.com/${url}`);
       break;
     case "POST":
       request = await axios.post(url, body);

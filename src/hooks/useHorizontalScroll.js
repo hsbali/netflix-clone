@@ -29,6 +29,6 @@ export function useHorizontalScroll(setStartOverflow, setEndOverflow) {
       el.addEventListener("wheel", onWheel);
       return () => el.removeEventListener("wheel", onWheel);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return elRef;
 }

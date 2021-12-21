@@ -35,3 +35,9 @@ export const getContentDetails =
       if (err.response) return alert(err.message);
     }
   };
+
+export const clearContentDetails = () => (dispatch) => {
+  dispatch({
+    type: t.CLEAR_DETAILS,
+  })
+}

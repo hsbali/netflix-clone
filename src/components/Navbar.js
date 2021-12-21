@@ -28,7 +28,7 @@ const Navbar = () => {
     setActiveCategoryNav(
       categoryNavItems.find((el) => el.link === window.location.pathname)
     );
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <header>

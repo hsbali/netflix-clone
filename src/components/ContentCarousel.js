@@ -9,12 +9,10 @@ const ContentCarousel = ({ carouselWithItems }) => {
 	const [endOverflow, setEndOverflow] = useState(true)
 
 	const scrollRef = useHorizontalScroll(setStartOverflow, setEndOverflow)
-	
+
 	const onScrollCarousel = (e) => {
 		const el = scrollRef.current
-		if (
-			el.scrollLeft === el.scrollWidth - el.clientWidth
-		) {
+		if (el.scrollLeft === el.scrollWidth - el.clientWidth) {
 			setEndOverflow(false)
 		} else {
 			setEndOverflow(true)

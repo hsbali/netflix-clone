@@ -115,7 +115,7 @@ export const onLoadMoreInCarousel = (carouselData) => async (dispatch) => {
 		if (carouselData.page <= 500) {
 			const newRequestOptions = {
 				...carouselData.requestOptions,
-				page: carouselData.requestOptions.page + 1,
+				page: carouselData.page + 1,
 			}
 			const res = await request(
 				'GET',

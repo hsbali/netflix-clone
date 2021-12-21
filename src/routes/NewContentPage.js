@@ -28,25 +28,32 @@ const NewContentPage = () => {
     },
   };
 
-  console.log(new Date());
-
   const requestOtions = {
-    newReleasedMovies: {
-      "primary_release_date.gte": "2021-09-01",
-    },
-    newReleasedTVShows: {
-      "primary_release_date.gte": "2021-09-01",
-    },
+    newReleasedMovies: {},
+    newReleasedTVShows: {},
   };
 
   useEffect(() => {
+    const date = new Date();
+    const dateStr = `${date.getFullYear()}-${
+      (date.getMonth() + 1 - 3).toString().length === 1
+        ? `0${date.getMonth() + 1 - 3}`
+        : date.getMonth() + 1 - 3
+    }-${date.getDate()}`;
     dispatch(
-      getMoviesInCarousel(
-        carousels.newReleasedMovies,
-        requestOtions.newReleasedMovies
-      )
+      getMoviesInCarousel(carousels.newReleasedMovies, {
+        ...requestOtions.newReleasedMovies,
+        // eslint-disable-next-line 
+        ["primary_release_date.gte"]: dateStr,
+      })
     );
-    dispatch(getTvShowsInCarousel(carousels.newReleasedTVShows, requestOtions.newReleasedTVShows));
+    dispatch(
+      getTvShowsInCarousel(carousels.newReleasedTVShows, {
+        ...requestOtions.newReleasedTVShows,
+        // eslint-disable-next-line 
+        ["primary_release_date.gte"]: dateStr,
+      })
+    );
     return () => dispatch(clearCarouselsWithItems());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
